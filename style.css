@@ -1,0 +1,634 @@
+             /* ----- HEADER SECTION ----- */
+
+/* estilo de fuente */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    /* 
+  'box-sizing: border-box' asegura que el tamaño total del elemento 
+  incluya padding y bordes, evitando que su tamaño cambie al agregarlos.
+*/
+    box-sizing: border-box;
+    /* Realentiza el desplazamiento */
+    scrollbar-color: #114d4d #fff;
+}
+
+/* Quitar margen, colocar estilo de fuente, color de fondo a la pagina y color de letras */
+body{
+    margin: 0;
+    font-family: "Montserrat";
+    background-color: #fffd;
+    color: #101632dd;
+}
+
+/* Quitar padding y margen por defecto a todos */
+div, ul, nav, header, footer, a,li, label{
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado */
+.header{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    font-size: 18px;
+    color: #114d4d;
+}
+
+/* Estilo al label */
+.header__open-nav-button{
+    color: #114d4d;
+    font-size: 2.5rem;
+    font-weight: 600;
+    position: absolute;
+    right: 10px;
+}
+
+/* oculta el checkbox */
+.header__checkbox{
+    display: none;
+}
+
+/* Oculta el nav y se le pone los estilos */
+.header__nav{
+    display: none;
+    background-color: #fff;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    z-index: -1;
+}
+
+/* Estilo a la lista del nav */
+.header__nav-list{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+/* Si le dan click aparece el nav */
+.header__checkbox:checked ~ .header__nav{
+    display: flex;
+}
+
+/* Logo */
+.header__logo{
+    max-width: 100%;
+    width: 64px;
+    margin: 10px 20px;
+}
+/* Estilo a li */
+.header__nav-item{
+    list-style: none;
+}
+
+/* Estilos a los link */
+.header__nav-item a{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Estilo de subrayado solo cuando pasan el mause por encima o le dan click */
+.header__nav-item :is(:hover,:active){
+    text-decoration: underline;
+}
+
+
+         /* ------ HEADER QUERIES ------- */
+
+/* Tamaño desktop */
+@media screen and (min-width: 600px){
+
+    .header{
+        padding: 0;
+        animation: header-movement both;
+        animation-timeline: scroll();
+        position: sticky;
+        top: 0;
+        box-shadow: 0 4px 4px #0005;
+    }
+
+    .header__nav{
+        display: block;
+        position: static; /* posicion por defecto */
+        height: auto;
+        width: auto;
+        justify-content: space-between;
+        z-index: 1;
+        background-color: initial;
+    }
+
+    .header__nav-list{
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        gap: 20px;
+        margin-right: 40px;
+    }
+
+    .header__open-nav-button{
+        display: none;
+    }
+
+}
+
+
+/* -------- HEADER ENDS ---------- */
+
+
+
+
+/* -------- PROFILE SECTION ---------- */
+
+.profile{
+    container-name: profile;
+    container-type: inline-size;
+    animation: aparecer 2.4s -.6s both;
+}
+
+.profile__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    max-width: 1400px;
+}
+
+/* Maximo de ancho */
+.profile__data-container{
+    max-width: 600px;
+    padding: 12px;
+    background-color: #fff;
+}
+
+/* Maximo de alto y overflow para cuando la imagen se agrande de vaya ocultando de abajo */
+.profile__img-container{
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.profile__img{
+    max-width: 100%; /* De esta forma hacemos la img responsive */
+    width: 720px; /* Tamaño de la img */
+    filter: drop-shadow( 2px 2px 2px #0003); /* Sombra a la img */
+    background-color: #114d4d;
+}
+
+/* Color de titulo principal */
+h1{
+    color: #114d4d;
+}
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify;
+    margin: 5px;
+}
+
+/* color Titulo secundario  */
+.profile__skills-container h2 {
+    color: #114d4d;
+}
+
+/* Estilo de la lista li */
+.profile__skill{
+    list-style: none;
+    display: flex;
+    margin: 10px;
+    max-width: 600px;
+    margin-left: 0;
+    align-items: center;
+}
+
+
+/* Estilo de porcentaje de skills */
+.load-bar{
+    border: 2px solid #114d4d;
+    border-radius: 8px;
+    color: #fff;
+    padding: 2px;
+    font-size: 12px;
+    width: 80%;
+    margin: 4px;
+    margin-left: 0;
+}
+
+.profile__skill-name{
+    color: #123142;
+    font-weight: 500;
+}
+
+/* Estilo de porcentaje de skills*/
+.load-bar__bar{
+    background-color: #114d4d;
+    border-radius: 4px;
+    padding: 4px 6px;
+}
+/* Estilo de la barra de porcentaje de skill */
+.bar--90{
+    width: 90%;
+}
+
+.bar--80{
+    width: 80%;
+}
+
+.bar--70{
+    width: 70%;
+}
+
+/* -------- PROFILE QUERIES ---------- */
+
+@container profile (min-width: 720px){
+
+    .profile__wrapper{
+        flex-direction: row;
+        padding: 20px;
+        background-color: transparent;
+        height: 90vh;
+        margin: auto;
+    }
+
+    .profile__data-container{
+        background-color: #91a8b622;
+        display: flex;
+        align-items: center;
+        border-radius: 0 25px 25px 0;
+        box-shadow: 0 0 9px #0002;
+    }
+
+    h1{
+        margin-top: 0;
+        font-size: 4rem;
+        text-wrap: balance;
+    }
+
+    p{
+        text-wrap: balance;
+        text-align: justify;
+        margin: 0;
+        margin-right: 60px;
+    }
+
+    .profile__data{
+        max-width: 620px;
+    }
+
+    .profile__img-container{
+        max-height: initial;
+        border-radius: 25px 0 0 25px;
+    }
+
+    .profile__img{
+        height: 100vh;
+        object-fit: cover;
+        width: 620px;
+        background-color: #fff;
+    }
+}
+
+/* -------- PROFILE ENDS ---------- */
+
+/* -------- PORTFOLIO SECTION ---------- */
+
+.portfolio{
+    background-color: #114d4d;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    container-name: portfolio;
+    container-type: inline-size;
+    justify-content: space-evenly;
+}
+
+.portfolio__title{
+    font-size: 3rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.portfolio__project-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1300px;
+    margin: auto;
+    width: 100%;
+    gap: 12px;
+    padding: 12px;
+    min-height: 80vh;
+}
+
+.portfolio__project{
+    background-image: linear-gradient(#0005, #0005), url(fondo.png); /* Para colocar una capa oscura con una imagen */
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    place-content: center;
+    border-radius: 12px;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: contain 5% cover 40%;
+}
+
+.portfolio__project:hover{
+    opacity: 0.74;
+    outline: 2 px solid #fff6;
+}
+
+
+/* -------- PORTFOLIO QUERIES ---------- */
+
+@container portfolio (min-width: 56.25rem){
+    .portfolio__project-container{
+        grid-template-columns: repeat(auto-fill, minmax(420px,1fr));
+    }
+
+    .portfolio__project:first-child{
+        grid-column: span 2;
+    }
+
+    .portfolio__project:nth-child(6){
+        grid-column: span 2;
+    }
+}
+/* OTra resolucion */
+@container portfolio (min-width: 81.25rem){
+    .portfolio__project-container{
+        grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    }
+
+    .portfolio__project:first-child{
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .portfolio__project:nth-child(6){
+        grid-column: span 4;
+    }
+}
+
+
+/* ----CONTACT SECTION ------*/
+
+.form{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    container-name: form;
+    container-type: inline-size;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 20% contain 40%;
+    background-color: #91a8b653;
+}
+
+.form__form{
+    padding: 12px;
+    max-width: 600px;
+    width: 100%;
+    display: grid;
+    margin-bottom: 30px;
+    background-color: #91a8b603;
+}
+
+.form__input-container :is(input,textarea){
+    width: 100%;
+    padding: 9px;
+    font-size: 16px;
+    margin: 4px;
+    border: none;
+    box-shadow: 2px 2px 4px #0003;
+    border-radius: 5px;
+    background-color: #fffd;
+    outline: none;
+}
+
+
+.form__input-container textarea{
+    resize: none;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.form__input-container input[type="submit"]{
+    padding: 12px;
+    background-color: #114d4d;
+    color: #fff;
+}
+
+.form__title{
+    font-size: 2.4rem;
+    color: #114d4d;
+}
+
+/* ----CONTACT QUERIES ------*/
+
+@container form (min-width: 56.25rem){
+    .form__form{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "name lastname"
+        "email email"
+        "message message"
+        "button button";
+        gap: 12px;
+        background-image: radial-gradient(#91a8b622, #91a8b622);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 10px 5px 10px #0006;
+    }
+
+    .form__input-container:first-child{
+        grid-area: name;
+    }
+
+    .form__input-container:nth-child(2){
+        grid-area: lastname;
+    }
+
+    .form__input-container:nth-child(3){
+        grid-area: email;
+    }
+
+    .form__input-container:nth-child(4){
+        grid-area: message;
+    }
+    .form__input-container:nth-child(5){
+        grid-area: button;
+    }
+
+    .form__input-container :is(input,textarea){
+        box-shadow: 0;
+        border-radius: 4px;
+    }
+}
+
+/* ----CONTACT ENDS ------*/
+
+
+
+/* ---- FOOTER SECTION ------*/
+
+footer{
+    background-color: #114d4d;
+    padding: 60px;
+    color: #fffd;
+    font-size: 16px;
+}
+
+.txt{
+    margin: 0;
+    margin-top: 40px;
+    padding: 0;
+    font-size: 10px;
+    text-align: center;
+    color: #fff6;
+
+}
+
+
+/* From Uiverse.io by wilsondesouza */ 
+ul {
+    list-style: none;
+  }
+  
+  .example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .example-2 .icon-content {
+    margin: 0 10px;
+    position: relative;
+  }
+  .example-2 .icon-content .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .example-2 .icon-content:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+  }
+  .example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #4d4d4d;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+  }
+  .example-2 .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 25px;
+    height: 25px;
+  }
+  .example-2 .icon-content a:hover {
+    color: white;
+  }
+  .example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover .filled {
+    height: 100%;
+  }
+  
+  .example-2 .icon-content a[data-social="linkedin"] .filled,
+  .example-2 .icon-content a[data-social="linkedin"] ~ .tooltip {
+    background-color: #0274b3;
+  }
+  
+  .example-2 .icon-content a[data-social="github"] .filled,
+  .example-2 .icon-content a[data-social="github"] ~ .tooltip {
+    background-color: #24262a;
+  }
+  .example-2 .icon-content a[data-social="instagram"] .filled,
+  .example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+    background: linear-gradient(
+      45deg,
+      #405de6,
+      #5b51db,
+      #b33ab4,
+      #c135b4,
+      #e1306c,
+      #fd1f1f
+    );
+  }
+  .example-2 .icon-content a[data-social="youtube"] .filled,
+  .example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+    background-color: #ff0000;
+  }
+
+
+
+/* ---- FOOTER ENDS ------*/
+  
+
+/*------ ANIMATION ------*/
+
+@keyframes header-movement{
+    from{
+        padding: 20px 0;
+        background-color: #fff;
+    }
+    to{
+        padding: 0;
+        background-color: #10163266;
+        color: #fff;
+    }
+}
+
+
+
+@keyframes aparecer{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
