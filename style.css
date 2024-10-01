@@ -434,6 +434,10 @@ p{
     color: #114d4d;
 }
 
+.btn:hover{
+    opacity: .9;
+}
+
 /* ----CONTACT QUERIES ------*/
 
 @container form (min-width: 56.25rem){
